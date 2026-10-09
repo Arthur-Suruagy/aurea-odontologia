@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-offwhite font-sans text-ink antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif text-petrol;
+  }
+  :focus-visible {
+    outline: 2px solid #B99A62;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: #E8DFD0;
+    color: #173F3A;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-12;
+  }
+  .section-y {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+  .eyebrow {
+    @apply text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-gold-dark;
+  }
+  .display {
+    @apply font-serif font-medium leading-[1.05] tracking-tight;
+  }
+  .btn {
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full px-6 text-[0.95rem] font-medium transition duration-300 active:scale-[0.97];
+  }
+  .btn-primary {
+    @apply btn bg-petrol text-offwhite hover:bg-petrol-700;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-petrol-900 hover:bg-[#c8ab75];
+  }
+  .btn-outline {
+    @apply btn border border-petrol/30 text-petrol hover:border-petrol hover:bg-petrol hover:text-offwhite;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--d, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
